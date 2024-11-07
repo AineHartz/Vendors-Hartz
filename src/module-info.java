@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author ryanh
- *
- */
-module JUnit {
-}
