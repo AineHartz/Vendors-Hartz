@@ -52,7 +52,14 @@ public class VendorTest {
     void restock()
     {
         int current = vendor.itemAmount("Candy");
-        vendor.restock(10, "Candy");
+        vendor.restock(10, "Candy", 5);
         assertEquals(current + 10, vendor.itemAmount("Candy"));
+    }
+
+    @Test
+    void restockNew()
+    {
+        vendor.restock(5, "Lollipop", 10);
+        assertTrue(vendor.hasItem("Lollipop"));
     }
 }

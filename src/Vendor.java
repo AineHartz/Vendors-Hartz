@@ -101,10 +101,20 @@ class Vending {
     /*
     A method meant to get an item from the stock, increase the stock of that
     item, and then put it back in.
+
+    Ver 2: If the item doesn't already exist in Stock, it is added to the Stock.
      */
-    void restock(int amount, String name)
+    void restock(int amount, String name, double price)
     {
-        Stock.get(name).restock(amount);
+        if (Stock.containsKey(name))
+        {
+            Stock.get(name).restock(amount);
+        }
+
+        else
+        {
+            Stock.put(name, new Item(price, amount));
+        }
     }
 }
 
