@@ -80,5 +80,13 @@ class Vending {
                 System.out.println("Gimme more money");
         } else System.out.println("Sorry, don't know that item");
     }
+
+    /*
+    A simple method to empty out the inventory, for the third unit test.
+     */
+    void emptyInventory()
+    {
+        Stock.clear();
+    }
 }
 

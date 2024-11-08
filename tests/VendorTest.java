@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VendorTest {
 
@@ -44,6 +44,7 @@ public class VendorTest {
     @Test
     void emptyInventory()
     {
-
+        vendor.emptyInventory();
+        assertFalse(vendor.hasItem("Candy"));
     }
 }
