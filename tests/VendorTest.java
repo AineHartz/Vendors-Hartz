@@ -47,4 +47,12 @@ public class VendorTest {
         vendor.emptyInventory();
         assertFalse(vendor.hasItem("Candy"));
     }
+
+    @Test
+    void restock()
+    {
+        int current = vendor.itemAmount("Candy");
+        vendor.restock(10, "Candy");
+        assertEquals(current + 10, vendor.itemAmount("Candy"));
+    }
 }

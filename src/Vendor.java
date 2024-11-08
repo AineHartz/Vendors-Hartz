@@ -63,6 +63,15 @@ class Vending {
         return item.price;
     }
 
+    /*
+    Another accesor method written for a test class. This one checks
+    how much of an item is in stock.
+     */
+    int itemAmount(String itemName)
+    {
+        return Stock.get(itemName).stock;
+    }
+
     /**
      * attempt to purchase named item.  Message returned if
      * the balance isn't sufficient to cover the item cost.
@@ -87,6 +96,15 @@ class Vending {
     void emptyInventory()
     {
         Stock.clear();
+    }
+
+    /*
+    A method meant to get an item from the stock, increase the stock of that
+    item, and then put it back in.
+     */
+    void restock(int amount, String name)
+    {
+        Stock.get(name).restock(amount);
     }
 }
 
