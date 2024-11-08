@@ -6,7 +6,7 @@ import java.util.HashMap;
  * well as the current balance of money that has been deposited into the machine.
  */
 class Vending {
-    private static HashMap<String, Item> Stock = new HashMap<String,Item>();
+    private static HashMap<String, Item> Stock = new HashMap<String, Item>();
     private double balance;
 
     Vending(int numCandy, int numGum) {
@@ -15,43 +15,70 @@ class Vending {
         this.balance = 0;
     }
 
-    /** resets the Balance to 0 */
-    void resetBalance () {
+    /**
+     * resets the Balance to 0
+     */
+    void resetBalance() {
         this.balance = 0;
     }
 
-    /** returns the current balance */
-    double getBalance () {
+    /**
+     * returns the current balance
+     */
+    double getBalance() {
         return this.balance;
     }
 
-    /** adds money to the machine's balance
+    /**
+     * adds money to the machine's balance
+     *
      * @param amt how much money to add
-     * */
-    void addMoney (double amt) {
+     */
+    void addMoney(double amt) {
         this.balance = this.balance + amt;
     }
 
-    /** attempt to purchase named item.  Message returned if
+    /**
+     * I made this method to be able to check the stock
+     * from the unit test class without making Stock
+     * public.
+     *
+     * @param itemName the name of the item to check
+     * @return a boolean telling if the item is in stock or not
+     */
+    boolean hasItem(String itemName)
+    {
+        return Stock.containsKey(itemName);
+    }
+
+    /**
+     * The same as hasItem, but for checking price.
+     *
+     * @param itemName the name of the item to check
+     * @return a double containing the item's price
+     */
+    double itemPrice(String itemName)
+    {
+        Item item = Stock.get(itemName);
+        return item.price;
+    }
+
+    /**
+     * attempt to purchase named item.  Message returned if
      * the balance isn't sufficient to cover the item cost.
      *
      * @param name The name of the item to purchase ("Candy" or "Gum")
      */
-    void select (String name) {
+    void select(String name) {
         if (Stock.containsKey(name)) {
             Item item = Stock.get(name);
+
             if (balance >= item.price) {
                 item.purchase(1);
                 this.balance = this.balance - item.price;
-            }
-            else
+            } else
                 System.out.println("Gimme more money");
-        }
-        else System.out.println("Sorry, don't know that item");
+        } else System.out.println("Sorry, don't know that item");
     }
-
-}
-
-class Examples {
 }
 
