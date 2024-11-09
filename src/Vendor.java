@@ -2,11 +2,12 @@ import java.util.HashMap;
 
 
 /**
- * Class for a Vending Machine.  Contains a hashtable mapping item names to item data, as
+ * Class for a Vending Machine. Contains a hashtable mapping item names to item data, as
  * well as the current balance of money that has been deposited into the machine.
  */
 class Vending {
-    private static HashMap<String, Item> Stock = new HashMap<String, Item>();
+    //I made this not static so VendorSystem would work properly.
+    private HashMap<String, Item> Stock = new HashMap<String, Item>();
     private double balance;
 
     Vending(int numCandy, int numGum) {
@@ -114,6 +115,17 @@ class Vending {
         else
         {
             Stock.put(name, new Item(price, amount));
+        }
+    }
+
+    void printInventory()
+    {
+        for (HashMap.Entry<String, Item> entry : Stock.entrySet())
+        {
+            String itemName = entry.getKey();
+            Item item = entry.getValue();
+
+            System.out.println("Item: " + itemName + ", Price: " + item.price + ", Quantity: " + item.stock);
         }
     }
 }

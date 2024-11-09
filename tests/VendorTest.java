@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VendorTest {
@@ -62,4 +65,40 @@ public class VendorTest {
         vendor.restock(5, "Lollipop", 10);
         assertTrue(vendor.hasItem("Lollipop"));
     }
+
+    //Following test inspired by https://stackoverflow.com/questions/1119385/junit-test-for-system-out-println
+    @Test
+    void printInventory()
+    {
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        VendorSystem vendSys = new VendorSystem();
+        vendSys.printAll();
+
+        String expected = "Item: Candy, Price: 1.25, Quantity: 2\n" +
+                "Item: Gum, Price: 0.5, Quantity: 5\n" +
+                "\n" +
+                "\n" +
+                "Item: Candy, Price: 1.25, Quantity: 3\n" +
+                "Item: Gum, Price: 0.5, Quantity: 6\n" +
+                "\n" +
+                "\n" +
+                "Item: Candy, Price: 1.25, Quantity: 4\n" +
+                "Item: Gum, Price: 0.5, Quantity: 7\n" +
+                "\n" +
+                "\n" +
+                "Item: Candy, Price: 1.25, Quantity: 5\n" +
+                "Item: Gum, Price: 0.5, Quantity: 8\n" +
+                "\n" +
+                "\n" +
+                "Item: Candy, Price: 1.25, Quantity: 6\n" +
+                "Item: Gum, Price: 0.5, Quantity: 9\n" +
+                "\n" +
+                "\n";
+
+        assertTrue(outContent.toString().contains(expected));
+    }
+
+
 }
