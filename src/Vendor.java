@@ -79,16 +79,25 @@ class Vending {
      *
      * @param name The name of the item to purchase ("Candy" or "Gum")
      */
-    void select(String name) {
-        if (Stock.containsKey(name)) {
+    void select(String name)
+    {
+        if (Stock.containsKey(name))
+        {
             Item item = Stock.get(name);
 
-            if (balance >= item.price) {
+            if (balance >= item.price)
+            {
                 item.purchase(1);
                 this.balance = this.balance - item.price;
-            } else
+            }
+
+            else
                 System.out.println("Gimme more money");
-        } else System.out.println("Sorry, don't know that item");
+
+        }
+
+        else
+            System.out.println("Sorry, don't know that item");
     }
 
     /*
@@ -129,6 +138,12 @@ class Vending {
 
             System.out.println("Item: " + itemName + ", Price: " + item.price + ", Quantity: " + item.stock);
         }
+    }
+
+    //A simple method to remove a specific item from inventory.
+    void removeItem(String itemName)
+    {
+        Stock.remove(itemName);
     }
 }
 

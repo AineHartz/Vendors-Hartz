@@ -68,7 +68,7 @@ public class VendorTest {
 
     //The idea of this test is to approve it if things get printed, and if something goes wrong, fail it.
     //I commented out a throw exception statement into my printAll method and commented it out to made sure this failed
-    //properly if needed. 
+    //properly if needed.
     @Test
     void printInventory()
     {
@@ -88,6 +88,13 @@ public class VendorTest {
         {
             assert(true);
         }
+    }
+
+    @Test
+    void removeItem()
+    {
+        vendor.removeItem("Candy");
+        assertFalse(vendor.hasItem("Candy"));
     }
 
 
