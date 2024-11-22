@@ -167,5 +167,11 @@ class Vending {
     {
         Stock.get(itemName).setModifier(modifier);
     }
+
+    //Sets an item as a bestseller.
+    void setBestseller(String itemName)
+    {
+        Stock.get(itemName).setBestseller();
+    }
 }
 

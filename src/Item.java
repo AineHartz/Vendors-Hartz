@@ -5,6 +5,7 @@ class Item
     int purchaseCount;
     String itemDescription;
     double priceModifier;
+    boolean bestseller;
 
     Item(double price, int numPieces)
     {
@@ -13,6 +14,7 @@ class Item
         purchaseCount = 0;
         itemDescription = "";
         priceModifier = 1;
+        bestseller = false;
     }
 
     void restock(int amount)
@@ -43,5 +45,10 @@ class Item
     double getPrice()
     {
         return price * priceModifier;
+    }
+
+    void setBestseller()
+    {
+        bestseller = true;
     }
 }

@@ -133,4 +133,10 @@ public class VendorTest {
         assertTrue((checkPrice * 0.8) == (vendor.returnItem("Candy").getPrice()));
     }
 
+    @Test
+    void setBestseller()
+    {
+        vendor.setBestseller("Candy");
+        assertTrue(vendor.returnItem("Candy").bestseller);
+    }
 }
