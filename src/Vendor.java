@@ -125,6 +125,8 @@ class Vending {
             String itemName = entry.getKey();
             Item item = entry.getValue();
 
+            //throw new RuntimeException("on purpose");
+
             System.out.println("Item: " + itemName + ", Price: " + item.price + ", Quantity: " + item.stock);
         }
     }
