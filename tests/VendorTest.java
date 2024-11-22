@@ -105,5 +105,25 @@ public class VendorTest {
         assertTrue(vendor.returnItem("Candy").purchaseCount == 1);
     }
 
+    //Same concept as the printInventory test.
+    @Test
+    void viewDescription()
+    {
+        try
+        {
+            vendor.printItemDesc("Candy");
+        }
+
+        catch(Exception e)
+        {
+            assert(false);
+        }
+
+        finally
+        {
+            assert(true);
+        }
+    }
+
 
 }

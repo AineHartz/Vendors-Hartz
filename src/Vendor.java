@@ -13,6 +13,10 @@ class Vending {
     Vending(int numCandy, int numGum) {
         Stock.put("Candy", new Item(1.25, numCandy));
         Stock.put("Gum", new Item(.5, numGum));
+
+        Stock.get("Candy").setDescription("A marvelous piece of candy.");
+        Stock.get("Gum").setDescription("A decidedly subpar piece of gum, unfortunately.");
+
         this.balance = 0;
     }
 
@@ -150,6 +154,11 @@ class Vending {
     void removeItem(String itemName)
     {
         Stock.remove(itemName);
+    }
+
+    void printItemDesc(String itemName)
+    {
+        System.out.println(Stock.get(itemName).itemDescription);
     }
 }
 
