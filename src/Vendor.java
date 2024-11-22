@@ -65,7 +65,7 @@ class Vending {
     double itemPrice(String itemName)
     {
         Item item = Stock.get(itemName);
-        return item.price;
+        return item.getPrice();
     }
 
     /*
@@ -95,10 +95,10 @@ class Vending {
         {
             Item item = Stock.get(name);
 
-            if (balance >= item.price)
+            if (balance >= item.getPrice())
             {
                 item.purchase(1);
-                this.balance = this.balance - item.price;
+                this.balance = this.balance - item.getPrice();
             }
 
             else
@@ -146,7 +146,7 @@ class Vending {
 
             //throw new RuntimeException("on purpose");
 
-            System.out.println("Item: " + itemName + ", Price: " + item.price + ", Quantity: " + item.stock);
+            System.out.println("Item: " + itemName + ", Price: " + item.getPrice() + ", Quantity: " + item.stock);
         }
     }
 
@@ -159,6 +159,13 @@ class Vending {
     void printItemDesc(String itemName)
     {
         System.out.println(Stock.get(itemName).itemDescription);
+    }
+
+    //Modifier is how the price of the item should be changed, 0.8 as a mod being the price of the item multiplied
+    //by 0.8, so 20% off.
+    void applyDiscount(String itemName, double modifier)
+    {
+        Stock.get(itemName).setModifier(modifier);
     }
 }
 

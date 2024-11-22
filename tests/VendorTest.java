@@ -125,5 +125,12 @@ public class VendorTest {
         }
     }
 
+    @Test
+    void applyDiscount()
+    {
+        double checkPrice = vendor.returnItem("Candy").getPrice();
+        vendor.applyDiscount("Candy", 0.8);
+        assertTrue((checkPrice * 0.8) == (vendor.returnItem("Candy").getPrice()));
+    }
 
 }
