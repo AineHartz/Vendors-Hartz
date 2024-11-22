@@ -97,5 +97,13 @@ public class VendorTest {
         assertFalse(vendor.hasItem("Candy"));
     }
 
+    @Test
+    void trackPurchase()
+    {
+        vendor.addMoney(200);
+        vendor.select("Candy");
+        assertTrue(vendor.returnItem("Candy").purchaseCount == 1);
+    }
+
 
 }

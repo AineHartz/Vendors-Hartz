@@ -73,6 +73,12 @@ class Vending {
         return Stock.get(itemName).stock;
     }
 
+    //Another accesor for the trackPurchases test!
+    Item returnItem(String itemName)
+    {
+        return Stock.get(itemName);
+    }
+
     /**
      * attempt to purchase named item.  Message returned if
      * the balance isn't sufficient to cover the item cost.
